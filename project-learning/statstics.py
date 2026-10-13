@@ -15,17 +15,18 @@ df = pd.DataFrame({
 df['revenue'] = df['quantity'] * df['product'].map(price)
 df['month'] = df['date'].dt.to_period('M')
 
+print(df.head())
 # 1. Kaunsa product sabse zyada bika (units) aur kisne sabse zyada kamaya (revenue)
 # print(df.groupby('product')['quantity'].sum().sort_values(ascending=False))
 # print(df.groupby('product')['revenue'].sum().sort_values(ascending=False))
 
 # 2. Kaunsa mahina slow tha
 monthly = df.groupby('month')['revenue'].sum()
-print(monthly.idxmin())
+# print(monthly.idxmin())
 monthly.plot(kind='bar')
 
 # 3. Average order value
-print(df['revenue'].mean())
+# print(df['revenue'].mean())
 
 
 

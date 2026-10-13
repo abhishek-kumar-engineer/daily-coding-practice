@@ -10,14 +10,16 @@ df['month'] = df['date'].dt.to_period('M')
 # print(df.head())
 
 # 1. Kaunsa product sabse zyada bika (units) 
+print('Kaunsa product sabse zyada bika (units) ')
 print(df.groupby('product')['quantity'].sum().sort_values(ascending=False))
 
 # aur kisne sabse zyada kamaya (revenue)
+print('kisne sabse zyada kamaya (revenue)')
 print(df.groupby('product')['revenue'].sum().sort_values(ascending=False))
 
 # 2. Kaunsa mahina slow tha
 monthly = df.groupby('month')['revenue'].sum()
-print(monthly.idxmin())
+print('Kaunsa mahina slow tha', monthly.idxmin())
 
 monthly.plot(kind='bar', title='Monthly revenue')
 plt.tight_layout()
@@ -25,4 +27,4 @@ plt.show()   # script (.py) mein chart dikhane ke liye ye line zaroori hai
 
 
 # 3. Average order value
-print(df['revenue'].mean())
+print('Average order value', df['revenue'].mean())
